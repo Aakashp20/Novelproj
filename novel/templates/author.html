@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    BookName:<input type="text" name="BookName"><br><br>
+    Category:
+    <select name="CategoryName">
+        {% for x in b1 %}
+            <option value="{{ x.categoryID }}">{{ x.categoryName }}</option>
+        {% endfor %}
+    </select><br><br>
+    BookImage:<input type="file" name="BookImage"><br><br>
+    Description:<input type="text" name="Description">
+    <input type="submit">
+</form>
+</body>
+</html>

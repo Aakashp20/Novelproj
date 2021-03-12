@@ -1,0 +1,173 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--   {% block title %}<title>BookData</title>{% endblock %}-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h1>Description</h1>{{ Bookdata.Description }}<br>-->
+
+<!--<h1>Category:</h1>{{ category }}<br>-->
+
+<!--<h1>Chapter:</h1>-->
+<!--{% for x in chapterdata %}<br>-->
+<!--    {{ x.ChapterNo}}<br>-->
+<!--    {{ x.ChapterName }}<br>-->
+<!--    {{ x.ChapterData }}<br>-->
+<!--{% endfor %}-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookData</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+  	<link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="{% static '/css/book.css' %}">
+</head>
+<body>
+<nav class="nav">
+	<ul class="main">
+		<input type="text" placeholder="Search..">
+		<li class="main_item"><a href="#">Novel List</a>
+			<ul class="submenu">
+				<li class="submenu_item"><a href="#">Latest Release</a></li>
+				<li class="submenu_item"><a href="#">Hot Novel</a></li>
+				<li class="submenu_item"><a href="#">Completed Novel</a></li>
+				<li class="submenu_item"><a href="#">Most Popular</a></li>
+			</ul>
+		</li>
+		<li class="main_item"><a href="#">Genre</a>
+			<ul class="submenu">
+				<ul class="Inner_submenu">
+					<li class="submenu_item"><a href="#">Action</a></li>
+					<li class="submenu_item"><a href="#">Adult</a></li>
+					<li class="submenu_item"><a href="#">Advanture</a></li>
+					<li class="submenu_item"><a href="#">Ai</a></li>
+					<li class="submenu_item"><a href="#">Arts</a></li>
+					<li class="submenu_item"><a href="#">Bender</a></li>
+					<li class="submenu_item"><a href="#">Comedy</a></li>
+					<li class="submenu_item"><a href="#">Drama</a></li>
+					<li class="submenu_item"><a href="#">Ecchi</a></li>
+					<li class="submenu_item"><a href="#">Fantasy</a></li>
+					<li class="submenu_item"><a href="#">Game</a></li>
+					<li class="submenu_item"><a href="#">Gender</a></li>
+				</ul>
+				<ul class="Inner_submenu">
+					<li class="submenu_item"><a href="#">Genderbender</a></li>
+					<li class="submenu_item"><a href="#">Harem</a></li>
+					<li class="submenu_item"><a href="#">Historical</a></li>
+					<li class="submenu_item"><a href="#">History</a></li>
+					<li class="submenu_item"><a href="#">Horror</a></li>
+					<li class="submenu_item"><a href="#">Josei</a></li>
+					<li class="submenu_item"><a href="#">Lolicon</a></li>
+					<li class="submenu_item"><a href="#">Martial</a></li>
+					<li class="submenu_item"><a href="#">Martial Art</a></li>
+					<li class="submenu_item"><a href="#">Mature</a></li>
+					<li class="submenu_item"><a href="#">Mecha</a></li>
+					<li class="submenu_item"><a href="#">Modern Life</a></li>
+				</ul>
+				<ul class="Inner_submenu">
+					<li class="submenu_item"><a href="#">Mystery</a></li>
+					<li class="submenu_item"><a href="#">Psychological</a></li>
+					<li class="submenu_item"><a href="#">Romance</a></li>
+					<li class="submenu_item"><a href="#">School Life</a></li>
+					<li class="submenu_item"><a href="#">sci-fi</a></li>
+					<li class="submenu_item"><a href="#">Seinem</a></li>
+					<li class="submenu_item"><a href="#">Shoujo</a></li>
+					<li class="submenu_item"><a href="#">Shoujo Ai</a></li>
+					<li class="submenu_item"><a href="#">Shounen</a></li>
+					<li class="submenu_item"><a href="#">Shounen Ai</a></li>
+					<li class="submenu_item"><a href="#">Slice of Life</a></li>
+					<li class="submenu_item"><a href="#">Smut</a></li>
+				</ul>
+		</li>
+	</ul>
+</nav>
+
+<h1>NOVEL INFO </h1>
+<h2>HOT `SCI-FI NOVEL </h2>
+{% for x in Bookdata %}
+<img src="../media/{{ x.BookImage }}" width="400" height="400" alt="{{ x.BookName }}" >
+<h3>{{ x.BookName }}</h3>
+{% endfor %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/book.css' %}">
+
+
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+{% for x in Bookdata %}
+<h6>Alternative names:{{ x.BookName }}</h6>
+{% endfor %}
+<h6>Author: {{ authorname2 }}</h6>
+<h6>Genre:{{ category }}</h6>
+<h6>Source:Aakash Patel's DataBase</h6>
+{% for x in Bookdata %}
+<h6>Status:{{ x.IsCompleted }}</h6>
+{% endfor %}
+
+<div class="btn-group">
+
+	<a href="{% url 'chapter'  bookdata1  chapterdata1 %} ">
+	 <button>READ NOW</button>
+	</a>
+</div>
+
+<div class="topnav">
+  <ul class="navtopnav">
+    <li class="active"><a data-toggle="tab" href="#Description">Description</a></li>
+    <li><a data-toggle="tab" href="#Chapter List">Chapter List</a></li>
+    <li><a data-toggle="tab" href="#More from author">More from author</a></li>
+    <li><a data-toggle="tab" href="#Comments">Comments</a></li>
+  </ul>
+
+ <div class="tab-content">
+
+	  <div id="Description" class="tab-pane fade in active">
+      <p><br><br>{{ Description }}<br>asdggdghfj  aakash
+  		</p>
+    </div>
+    <div id="Chapter List" class="tab-pane fade">
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="More from author" class="tab-pane fade">
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="Comments" class="tab-pane fade">
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="topnav">
+  <a href="#Description" class="active">Description</a>
+  	<div style="padding-left:16px">
+  		<p><br>Starting over once more, he has entered this “living game” again in order to control his own fate.<br>This time, he will not be controlled by others.<br>Previously the Level 200 Sword King, he will rise to a higher peak in this life.<br>Methods to earn money! Dungeon conquering strategies! Legendary Quests! Equipment drop locations! Undiscovered battle techniques!<br>Even the secrets Beta Testers were unknowledgeable of, he knows of them all.<br>Massive wars, life advancement, entering Godhood, sword reaching to the peak; a legend of a man becoming a Sword God has begun.
+  		</p>
+	</div>
+  <a href="#Chapter List">Chapter List</a>
+  <a href="#More from author">More from author</a>
+  <a href="#Comments">Comments</a>
+</div>
+ -->
+<p>ReadNovelFull.Com Read light novel, web novel, korean novel and chinese<br>novel online for free. You can find hundreds of english translated light novel,<br>web novel, korean novel and chinese novel which are daily updated! Read<br>novels online, read light novel online, read online free, free light novel online.</p>
+
+
+
+</body>
+</html>
+
+
+

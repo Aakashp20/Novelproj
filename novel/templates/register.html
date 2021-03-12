@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    UserName:<input type="text" name="UserName"><br><br>
+    UserType:
+    <select name="UserType">
+        {% for x in a1 %}
+            <option value="{{ x.UserTypeID }}">{{ x.UserType }}</option>
+        {% endfor %}
+    </select><br><br>
+    UserEmail:<input type="text" name="UserEmail"><br><br>
+    UserMobile:<input type="text" name="UserMobile"><br><br>
+    UserPassword:<input type="password" name="Password"><br><br>
+
+    <input type="submit">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,195 @@
+body{
+	margin : 0;
+	padding: 0;
+	font-family: Century Gothic, sans-serif;
+	font-size: 16px;
+}
+
+.nav{
+	width: 100%;
+	background-color: #003366;
+	color: #fff;
+}
+
+.main{
+	line-height: 30px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.nav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.nav ul{
+
+	list-style-type: none;
+	margin : 0;
+	padding: 0;
+}	
+
+ 
+.nav .main .main_item {
+	display: inline-block;
+	position: relative;
+}
+
+.nav .main .main_item a{
+	padding: 10px 20px;
+	/*margin-left: 192px;*/
+	cursor: pointer;
+	text-decoration: none;
+	color: #fff;
+	display: block;
+}
+
+.submenu{
+	text-transform: none;
+	display: none;
+	position: absolute;
+	font-size: 10px;
+	width: 300px;
+	background-color: rgba(0,0,0,0.8);
+}
+
+.main_item:hover .submenu{
+	width: 400%;
+	display: block;
+}
+
+.submenu_item:hover{
+	background-color: rgba(0,0,0,0.6);
+}
+
+.Inner_submenu{
+	width: 30%;
+	float: left;
+}
+
+
+h1{
+	font-size: 20px;
+	margin-left: 120px;
+	margin-top: 50px;
+}
+
+h2{
+	font-size: 20px;
+	float: right;
+	margin-right: 220px;
+	margin-top: -10px;
+}
+
+img {
+	list-style-type: none;
+	padding-left: 100px;
+	margin-top: 20px;
+  	margin-left: 400px;
+  	margin: 5px;
+  	float: left;
+  	position: relative;
+  	max-width: 800px; 
+  	margin: 0 auto;
+
+}
+
+h3{
+	margin-top: 35px;
+	margin-left: 390px;
+}
+
+.checked {
+  	color: orange;
+  	float: left;
+  	
+}
+
+h6{
+	float: bottom;
+	margin-left: 380px;
+	font-size: 15px;
+	line-height: 200%;
+}
+
+.btn-group button {
+  float: bottom;
+  margin-top: 40px;
+  background-color: #790604; 
+  border: 1px solid black; 
+  color: white; 
+  padding: 10px 24px; 
+  margin-left: 80px;
+
+}
+
+
+.topnav {
+  float: bottom;
+  background-color: transparent;
+  overflow: hidden;
+  margin-top: 40px;
+  
+}
+
+.topnav .navtopnav{
+	
+}
+
+.tab-content p{
+	margin-left: 40px;
+	font-size: 18px;
+	line-height: 30px;
+
+}
+
+/*.topnav a {
+  float: left;
+  display: block;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+  margin-left: 20px;
+}
+
+.topnav a:hover {
+  border-bottom: 3px solid darkgrey;
+}
+
+.topnav a.active {
+  border-bottom: 3px solid darkgrey;
+}
+
+.topnav a.active p{
+	float: bottom;
+
+}
+*/
+
+
+
+
+p{
+	font-size: 15px;
+	float: bottom;
+	margin-top: 60px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
