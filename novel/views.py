@@ -15,17 +15,28 @@ def chapter(request,id,chapid=0):
         #print(next_chapter)
     else:
         chapter = ChapterMaster.objects.filter(BookID=id).values('ChapterID', 'ChapterName', 'ChapterData')
+        #print(list(chapter))
         count=0
+        next_chapter=0
+        prev_chapter=0
+        index=0
         for x in chapter:
             if count == 1:
+                print('count', count)
                 next_chapter=x['ChapterID']
-                print(next_chapter)
+                #print('beforeindex', index)
                 break
             if x['ChapterID'] == chapid:
                 count = 1
-
+                index =list(chapter).index(x)
+                #print('index',index)
+                if index > 0:
+                    index = index - 1
+                    #print('ifindex', index)
+                    prev_chapter = list(chapter)[index]['ChapterID']
+                    #print('prev',prev_chapter)
         chapter = ChapterMaster.objects.filter(ChapterID=chapid).values('ChapterID', 'ChapterName', 'ChapterData','ChapterNo')
-    return render(request, 'page.html',context={'book_name1': book_name1, 'chapter': chapter, 'next_chapter': next_chapter})
+    return render(request, 'page.html',context={'book_name1': book_name1, 'chapter': chapter, 'next_chapter': next_chapter,'prev_chapter':prev_chapter})
 
 
 def page(request,id):

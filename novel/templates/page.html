@@ -71,9 +71,12 @@
 
 
 <page class="button">
-	<a href="#" class="previous">&laquo; Previous</a>
+	{% if prev_chapter > 0 %}
+	<a href="{% url 'chapter' book_name1.0.BookID prev_chapter %}" class="previous">&laquo; Previous</a>
+	{% endif %}
+	{% if next_chapter > 0 %}
 	<a href="{% url 'chapter' book_name1.0.BookID next_chapter %}" class="Next">Next &raquo;</a>
-
+	{% endif %}
 	<a href="#" class="previous round">&#8249;</a>
 	<a href="#" class="next round">&#8250;</a>
 </page>
@@ -84,9 +87,12 @@ chapter {{ chapter.0.ChapterNo }}  - {{ chapter.0.ChapterName }}<br><br>{{ chapt
 
 
 <page class="button1">
-	<a href="#" class="previous">&laquo; Previous</a>
+	{% if prev_chapter > 0 %}
+	<a href="{% url 'chapter' book_name1.0.BookID prev_chapter %}" class="previous">&laquo; Previous</a>
+	{% endif %}
+	{% if next_chapter > 0 %}
 	<a href="{% url 'chapter' book_name1.0.BookID next_chapter %}" class="next">Next &raquo;</a>
-
+	{% endif %}
 	<a href="#" class="previous round">&#8249;</a>
 	<a href="#" class="next round">&#8250;</a>
 </page>
