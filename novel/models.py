@@ -28,14 +28,14 @@ class UserMaster(models.Model):
         return self.UserName
 
 class CategoryMaster(models.Model):
-    categoryID = models.AutoField(primary_key=True)
-    categoryName = models.CharField(max_length=25,help_text="what your book's category: ", null=False, blank=False)
-    createdAt = models.DateTimeField(auto_now_add=True)
+    CategoryID = models.AutoField(primary_key=True)
+    CategoryName = models.CharField(max_length=25,help_text="what your book's category: ", null=False, blank=False)
+    CreatedAt = models.DateTimeField(auto_now_add=True)
     modifiedAt = models.DateTimeField(auto_now=True)
     IsActive = models.BooleanField(default=1)
 
     def __str__(self):
-        return self.categoryName
+        return self.CategoryName
 
 class BookMaster(models.Model):
     BookID = models.AutoField(primary_key=True)

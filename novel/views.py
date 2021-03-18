@@ -6,6 +6,12 @@ from django.template import loader
 
 
 # Create your views here
+def novelListByCategory(request,category):
+    action=BookMaster.objects.filter(CategoryID__CategoryName=category).values('BookImage','BookName')
+    category1=CategoryMaster.objects.filter(CategoryName=category).values('CategoryName')
+    print(action)
+    return render(request, 'booklist.html',context={'action':action,'category1':category1})
+
 def chapter(request,id,chapid=0):
     book_name1 = BookMaster.objects.filter(BookID=id).values('BookID', 'BookName')
 
@@ -49,7 +55,28 @@ def page(request,id):
 def home(request):
     book_list=BookMaster.objects.all().values('BookID','BookImage','BookName')
     book_list1 = BookMaster.objects.filter(IsCompleted=True).values('BookID', 'BookImage', 'BookName')
-    category_list=CategoryMaster.objects.all().values('categoryID','categoryName')
+    category_list=CategoryMaster.objects.all().values('CategoryName')
+    category_list1=list(category_list)
+    # for z in category_list1:
+    #     print(z)['CategoryName']
+    list2=[]
+    for z in range(0,len(category_list1)):
+        categoryname=(category_list[z]['CategoryName'])
+        list2.append(categoryname)
+    print(list2)
+    tempararay=int(len(category_list)/3)
+    categorybylist=[list2[i:i + tempararay] for i in range(0,len(list2),tempararay)]
+    category_list1=categorybylist[0]
+    category_list2=categorybylist[1]
+    category_list3=categorybylist[2]
+
+    tempararay1 = int(len(category_list) /2)
+    categorybylist = [list2[i:i + tempararay1] for i in range(0, len(list2), tempararay1)]
+    category_list4 = categorybylist[0]
+    category_list5 = categorybylist[1]
+    # def chunk_list(list2,chunk_size):
+    #         for i in range(0,len(list2),chunk_size):
+    #             yield list2[i:i + chunk_size]
     chapter_list=ChapterMaster.objects.all().values('ChapterNo','ChapterName')
     list1=[]
     for x in range(0,len(book_list)):
@@ -57,13 +84,13 @@ def home(request):
         book_name=book_list[x]['BookName']
         #print(book_name)
         category_id=BookMaster.objects.filter(BookID=book_id).values('CategoryID_id')[0]['CategoryID_id']
-        category_name=CategoryMaster.objects.filter(categoryID=category_id).values('categoryName')[0]['categoryName']
+        category_name=CategoryMaster.objects.filter(CategoryID=category_id).values('CategoryName')[0]['CategoryName']
         #print(category_name)
         chapter_name=ChapterMaster.objects.filter(BookID=book_id).values('ChapterNo','ChapterName')
         if chapter_name:
             chapter_no=chapter_name[0]['ChapterNo']
             chapter_name1=chapter_name[0]['ChapterName']
-            print((chapter_no))
+            #print((chapter_no))
             temp_variable = {'BookID': book_id, 'BookName': book_name, 'categoryName': category_name,
                              'ChapterNo': chapter_no, 'ChapterName': chapter_name1}
         else:
@@ -72,7 +99,7 @@ def home(request):
 
         list1.append(temp_variable)
         #print(list1)
-    return render(request,'home.html',context={'list1':list1,'book_list':book_list,'book_list1':book_list1})
+    return render(request,'home.html',context={'list1':list1,'book_list':book_list,'book_list1':book_list1,'category_list':category_list,'category_list1':category_list1,'category_list2':category_list2,'category_list3':category_list3,'category_list4':category_list4,'category_list5':category_list5})
 
 def bookdata(request,id):
 
@@ -96,7 +123,7 @@ def bookdata(request,id):
         #list1.append(tempvar)
         #print(list1)
     chapterdata =ChapterMaster.objects.filter(BookID=id).values('ChapterID', 'ChapterNo', 'ChapterName', 'ChapterData')
-    category=CategoryMaster.objects.filter(categoryID=Bookdata[0]['CategoryID']).values('categoryName')[0]['categoryName']
+    category=CategoryMaster.objects.filter(CategoryID=Bookdata[0]['CategoryID']).values('CategoryName')[0]['CategoryName']
     authorname1=BookMaster.objects.filter(UserID_id=id).values('UserID')[0]['UserID']
     authorname2=UserMaster.objects.filter(UserID=authorname1).values('UserName')[0]['UserName']
     #print(authorname2)

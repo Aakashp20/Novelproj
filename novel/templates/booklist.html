@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List</title>
+    {% for x in action %}
+     <img src="../../media/{{ x.BookImage }}" width="200" height="300" alt="">
+    <br>
+    {{ x.BookName }}
+    {% endfor %}
+</head>
+<body>
