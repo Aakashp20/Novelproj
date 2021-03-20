@@ -114,7 +114,7 @@ header{
 	padding: 10px;
     margin: 5px;
   	float: left;
-  	position: relative;
+  	/*position: relative;*/
   	max-width: 800px;
   	margin: 0 auto;
 
